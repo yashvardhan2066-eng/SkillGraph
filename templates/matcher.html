@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Job Matcher - SkillGraph{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+
+    <h1>Find Your Job Matches</h1>
+
+    <p>
+        Select a candidate and discover jobs based on their
+        existing skills.
+    </p>
+
+</div>
+
+<h2>Select a Candidate</h2>
+
+<br>
+
+{% if people %}
+
+<div class="card-grid">
+
+    {% for person in people %}
+
+    <div class="card">
+
+        <h2>{{ person }}</h2>
+
+        <p>
+            Analyze job compatibility based on this person's skills.
+        </p>
+
+        <a class="button"
+           href="{{ url_for('person_matches', person_name=person) }}">
+            Find Matches
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-state">
+
+    <h2>No candidates available</h2>
+
+    <p>
+        There are currently no candidates to analyze.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}SkillGraph{% endblock %}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a class="logo" href="{{ url_for('dashboard') if session.get('person_name') else url_for('login') }}">
+            SkillGraph
+        </a>
+
+        {% if session.get("person_name") %}
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+
+            <a href="{{ url_for('jobs') }}">Jobs</a>
+
+            <a href="{{ url_for('skills') }}">Skills</a>
+
+            <a href="{{ url_for('matcher') }}">Job Matcher</a>
+
+            <a class="logout-link" href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </nav>
+
+    <main class="container">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <footer class="footer">
+        <p>SkillGraph</p>
+        <span>Graph-powered career exploration</span>
+    </footer>
+
+</body>
+
+</html>

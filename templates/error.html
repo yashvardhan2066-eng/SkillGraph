@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Something Went Wrong - SkillGraph{% endblock %}
+
+{% block content %}
+
+<div class="empty-state">
+
+    <h1>Something went wrong</h1>
+
+    <p>
+        We couldn't retrieve the requested information right now.
+    </p>
+
+    <p>
+        Please try again in a moment.
+    </p>
+
+    <a class="button" href="{{ url_for('home') }}">
+        Return Home
+    </a>
+
+</div>
+
+{% endblock %}

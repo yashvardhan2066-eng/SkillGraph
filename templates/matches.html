@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}My Job Matches - SkillGraph{% endblock %}
+
+{% block content %}
+
+<a class="back-link" href="{{ url_for('dashboard') }}">
+    ← Back to Dashboard
+</a>
+
+
+<div class="page-header">
+
+    <span class="eyebrow">PERSONALIZED MATCHING</span>
+
+    <h1>Job Matches for {{ person_name }}</h1>
+
+    <p>
+        Jobs ranked according to the skills you currently have.
+    </p>
+
+</div>
+
+
+{% if matches %}
+
+<div class="match-list">
+
+    {% for match in matches %}
+
+    <div class="match-card">
+
+        <div class="match-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    JOB MATCH
+                </span>
+
+                <h2>
+                    {{ match.job }}
+                </h2>
+
+                <p>
+                    <strong>Company:</strong>
+                    {{ match.company }}
+                </p>
+
+            </div>
+
+            <div class="match-score">
+                {{ "%.0f"|format(match.match_percentage) }}%
+                <span>Match</span>
+            </div>
+
+        </div>
+
+
+        <div class="match-summary">
+
+            <div>
+                <strong>{{ match.matching_count }}</strong>
+                <span>Skills Matched</span>
+            </div>
+
+            <div>
+                <strong>{{ match.required_count }}</strong>
+                <span>Required Skills</span>
+            </div>
+
+        </div>
+
+
+        <div class="match-section">
+
+            <h3 class="matching">
+                ✓ Matching Skills
+            </h3>
+
+            {% if match.matching_skills %}
+
+            <ul class="skill-list">
+
+                {% for skill in match.matching_skills %}
+
+                <li class="matching">
+                    ✓ {{ skill }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>No matching skills.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="match-section">
+
+            <h3 class="missing">
+                ✗ Skills to Develop
+            </h3>
+
+            {% if match.missing_skills %}
+
+            <ul class="skill-list">
+
+                {% for skill in match.missing_skills %}
+
+                <li class="missing">
+                    ✗ {{ skill }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p class="matching">
+                ✓ You have all the required skills!
+            </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-state">
+
+    <h2>No matches found</h2>
+
+    <p>
+        We couldn't find suitable jobs based on your current skills.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

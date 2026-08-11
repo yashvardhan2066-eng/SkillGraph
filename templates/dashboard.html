@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - SkillGraph{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-hero">
+
+    <div>
+
+        <span class="eyebrow">STUDENT DASHBOARD</span>
+
+        <h1>Welcome back, {{ person_name }}.</h1>
+
+        <p>
+            Explore opportunities and discover the skills
+            that can help you move toward your next role.
+        </p>
+
+    </div>
+
+    <a class="button hero-button" href="{{ url_for('matcher') }}">
+        View My Job Matches →
+    </a>
+
+</section>
+
+
+<section class="section-header">
+
+    <div>
+
+        <span class="eyebrow">EXPLORE</span>
+
+        <h2>What would you like to explore?</h2>
+
+    </div>
+
+</section>
+
+
+<div class="card-grid">
+
+    <a class="feature-card" href="{{ url_for('jobs') }}">
+
+        <div class="feature-icon">
+            💼
+        </div>
+
+        <h3>Explore Jobs</h3>
+
+        <p>
+            Browse available roles, companies, locations,
+            and the skills each job requires.
+        </p>
+
+        <span class="card-link">
+            Explore jobs →
+        </span>
+
+    </a>
+
+
+    <a class="feature-card" href="{{ url_for('skills') }}">
+
+        <div class="feature-icon">
+            🛠️
+        </div>
+
+        <h3>Explore Skills</h3>
+
+        <p>
+            Discover technologies, related skills,
+            and the jobs that use them.
+        </p>
+
+        <span class="card-link">
+            Explore skills →
+        </span>
+
+    </a>
+
+
+    <a class="feature-card featured-card" href="{{ url_for('matcher') }}">
+
+        <div class="feature-icon">
+            🎯
+        </div>
+
+        <h3>Your Job Matches</h3>
+
+        <p>
+            Compare your current skills with job requirements
+            and discover where you are the strongest match.
+        </p>
+
+        <span class="card-link">
+            Find my matches →
+        </span>
+
+    </a>
+
+</div>
+
+{% endblock %}

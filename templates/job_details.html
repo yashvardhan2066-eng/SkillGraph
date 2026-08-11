@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}{{ job.title }} - SkillGraph{% endblock %}
+
+{% block content %}
+
+<a class="back-link" href="{{ url_for('jobs') }}">
+    ← Back to Jobs
+</a>
+
+<div class="detail-header">
+
+    <span class="eyebrow">JOB OPPORTUNITY</span>
+
+    <h1>{{ job.title }}</h1>
+
+    <span class="badge">
+        {{ job.experience_level }}
+    </span>
+
+    <p class="detail-description">
+        {{ job.description }}
+    </p>
+
+</div>
+
+
+<div class="detail-grid">
+
+    <div class="card">
+
+        <h2>Company</h2>
+
+        <p class="detail-value">
+            {{ job.company }}
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Location</h2>
+
+        <p class="detail-value">
+            {{ job.location }}
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="card detail-card">
+
+    <h2>Required Skills</h2>
+
+    {% if job.skills %}
+
+    <ul class="skill-list">
+
+        {% for skill in job.skills %}
+
+        <li>
+            {{ skill.name }}
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+
+    <div class="empty-state">
+        No skills listed for this job.
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

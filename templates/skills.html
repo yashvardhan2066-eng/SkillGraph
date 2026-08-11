@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Skills - SkillGraph{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <span class="eyebrow">SKILL EXPLORER</span>
+
+    <h1>Explore Skills</h1>
+
+    <p>
+        Discover technologies, related skills, and the jobs
+        that use them.
+    </p>
+
+</div>
+
+
+{% if skills %}
+
+<div class="card-grid">
+
+    {% for skill in skills %}
+
+    <div class="card skill-card">
+
+        <div class="feature-icon">
+            🛠️
+        </div>
+
+        <h2>{{ skill }}</h2>
+
+        <p>
+            Explore related skills and career opportunities
+            connected to {{ skill }}.
+        </p>
+
+        <a class="card-link"
+           href="{{ url_for('skill_details', skill_name=skill) }}">
+            Explore Skill →
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-state">
+
+    <h2>No skills available</h2>
+
+    <p>
+        There are currently no skills to display.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

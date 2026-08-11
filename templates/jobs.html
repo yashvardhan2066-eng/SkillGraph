@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs - SkillGraph{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <span class="eyebrow">OPPORTUNITIES</span>
+    <h1>Explore Jobs</h1>
+    <p>
+        Discover roles, companies, locations, and the skills they require.
+    </p>
+</div>
+
+{% if jobs %}
+
+<div class="card-grid">
+
+    {% for job in jobs %}
+
+    <div class="card job-card">
+
+        <div class="job-card-top">
+
+            <span class="badge">
+                {{ job.experience_level }}
+            </span>
+
+        </div>
+
+        <h2>
+            <a href="{{ url_for('job_details', job_title=job.title) }}">
+                {{ job.title }}
+            </a>
+        </h2>
+
+        <p class="job-description">
+            {{ job.description }}
+        </p>
+
+        <div class="job-meta">
+            <p><strong>Company:</strong> {{ job.company }}</p>
+            <p><strong>Location:</strong> {{ job.location }}</p>
+        </div>
+
+        <a class="card-link"
+           href="{{ url_for('job_details', job_title=job.title) }}">
+            View Job Details →
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-state">
+    <h2>No jobs available</h2>
+    <p>There are currently no jobs to display.</p>
+</div>
+
+{% endif %}
+
+{% endblock %}
