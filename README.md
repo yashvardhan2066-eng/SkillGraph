@@ -50,6 +50,8 @@ The application uses CognoDB as the graph database and Flask as the web backend.
 
 ## Graph Data Model
 
+![SkillGraph Data Model](static/images/skillgraph_data_model.png)
+
 SkillGraph models career-related information as a graph.
 
 ### Nodes
