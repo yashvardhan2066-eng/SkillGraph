@@ -394,7 +394,12 @@ SkillGraph/
     │   └── style.css
     │
     └── images/
-        └── skillgraph_data_model.png
+        ├── skillgraph_data_model.png
+        ├── login.png
+        ├── dashboard.png
+        ├── job_details.png
+        ├── skill_details.png
+        └── job_matches.png
 ```
 
 ---
